@@ -25,6 +25,7 @@ export type AffairType = {
 }
 export type FilterType = 'all' | AffairPriorityType
 
+
 // constants
 const defaultAffairs: Array<AffairType> = [ // need to fix any DONE
     {_id: 1, name: 'React', priority: 'high'}, // студенты могут изменить содержимое name и количество элементов в массиве, ...priority не менять!
