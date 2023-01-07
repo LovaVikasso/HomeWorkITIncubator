@@ -11,10 +11,10 @@ import User from "../hw08/User";
 * 4 - в файле GreetingContainer.tsx дописать типизацию пропсов DONE
 * 5 - в файле GreetingContainer.tsx указать нужные типы в useState с name и error
 * 6 - в файле GreetingContainer.tsx дописать тип и логику функции setNameCallback
-* 7 - в файле GreetingContainer.tsx дописать логику функций pureAddUser, pureOnBlur, pureOnEnter и проверить их тестами
-* 8 - в файле GreetingContainer.tsx вычислить количество добавленных и имя последнего (totalUsers, lastUserName)
-* 9 - в файле Greeting.tsx дописать типизацию пропсов
-* 10 - в файле Greeting.tsx вычислить inputClass в зависимости от наличия ошибки
+* 7 - в файле GreetingContainer.tsx дописать логику функций pureAddUser, pureOnBlur, pureOnEnter и проверить их тестами DONE
+* 8 - в файле GreetingContainer.tsx вычислить количество добавленных и имя последнего (totalUsers, lastUserName) DONE
+* 9 - в файле Greeting.tsx дописать типизацию пропсов DONE
+* 10 - в файле Greeting.tsx вычислить inputClass в зависимости от наличия ошибки DONE
 * 11 - сделать стили в соответствии с дизайном
 * */
 
