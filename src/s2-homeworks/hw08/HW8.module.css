@@ -1,23 +1,47 @@
+:root {
+    --main-bg-color: brown;
+}
+
 .item {
+    height: 36px;
+    border-bottom: 1px solid #E5E5E5;
 }
 
 .item:last-of-type {
+    border-bottom: none;
 }
 
 .users {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 10px;
+
 }
 
 .buttonsContainer {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .container {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
 }
 
 .thead {
+    height: 36px;
+    font-weight: bold;
+    background-color: #E5E5E5;
 }
 
 .nameCol {
+    width: 300px;
+    padding-left: 20px;
+
 }
 
 .ageCol {
+    width: 300px;
+    padding-left: 20px;
 }
