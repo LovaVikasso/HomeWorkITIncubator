@@ -9,6 +9,25 @@ function Clock() {
     const [date, setDate] = useState<Date>(new Date(restoreState('hw9-date', Date.now())))
     const [show, setShow] = useState<boolean>(false)
 
+
+    const timeFormat: Intl.DateTimeFormatOptions = {
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric'
+    };
+    const weekdayFormat: Intl.DateTimeFormatOptions = {
+        weekday: 'long',
+    };
+
+    const monthFormat: Intl.DateTimeFormatOptions = {
+        month: 'long',
+    };
+    const dateFormat: Intl.DateTimeFormatOptions = {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+    };
+
     const start = () => {
         setTimerId(window.setInterval(() => {
             console.log('Interval++')
@@ -32,15 +51,14 @@ function Clock() {
         setShow(false)
     }
 
-    const stringTime = `${("0" + date.getHours()).slice(-2)}:${("0" + date.getMinutes()).slice(-2)}:${("0" + date.getSeconds()).slice(-2)}`
+    const stringTime =  date.toLocaleString('en-US', timeFormat) || <br/>
     // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01) // пишут студенты
-    const stringDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
+    const stringDate = date.toLocaleString('ru', dateFormat) || <br/>
     // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
 
     // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
-    const stringDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']  // пишут студенты
-    const stringMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']// пишут студенты
-
+    const stringDay = date.toLocaleString('en-US', weekdayFormat)|| <br/> // пишут студенты
+    const stringMonth = date.toLocaleString('en-US', monthFormat) || <br/> // пишут студенты
     return (
         <div className={s.clock}>
             <div
@@ -49,7 +67,7 @@ function Clock() {
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
             >
-                <span id={'hw9-day'}>{stringDay[date.getDay()]}</span>,{' '}
+                <span id={'hw9-day'}>{stringDay}</span>,{' '}
                 <span id={'hw9-time'}>
                     <strong>{stringTime}</strong>
                 </span>
@@ -59,7 +77,7 @@ function Clock() {
                 <div className={s.more}>
                     {show ? (
                         <>
-                            <span id={'hw9-month'}>{stringMonth[date.getMonth()]}</span>,{' '}
+                            <span id={'hw9-month'}>{stringMonth}</span>,{' '}
                             <span id={'hw9-date'}>{stringDate}</span>
                         </>
                     ) : (
