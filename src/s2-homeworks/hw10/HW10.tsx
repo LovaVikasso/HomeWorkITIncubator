@@ -13,14 +13,12 @@ import {Loader} from './Loader'
 * 4 - сделать стили в соответствии с дизайном
 * */
 
-const HW10 = () => {
-    const dispatch = useDispatch()
-    const isLoading = useSelector<AppStoreType, boolean>((state) => state.loading.isLoading)
-
+const HW10 = React.memo(() => {
     // useSelector, useDispatch // пишет студент
+    const loading = useSelector<AppStoreType,  boolean >(state => state.loading.isLoading)
+    const dispatch = useDispatch();
 
-
-    const setLoading = () => { // пишет студент // показать крутилку на 1,5 секунд
+    const setLoading = useCallback(() => { // пишет студент // показать крутилку на 1,5 секунд
         // dispatch
         dispatch(loadingAC(true))
         setTimeout(() => {
@@ -28,21 +26,21 @@ const HW10 = () => {
         }, 1500)
         // setTimeout
 
-    }
+    }, [dispatch])
+
 
     return (
         <div id={'hw10'}>
             <div className={s2.hwTitle}>Homework #10</div>
 
             <div className={s2.hw}>
-                {isLoading ? (
+                {loading ? (
                     <div id={'hw10-loading'}>
                         <Loader/>
                     </div>
                 ) : (
                     <SuperButton
-                        style={{padding: '20px'}}
-                        id={'#hw10-button-start-loading'}
+                        id={'hw10-button-start-loading'}
                         onClick={setLoading}
                     >
                         Set loading...
@@ -51,6 +49,6 @@ const HW10 = () => {
             </div>
         </div>
     )
-}
+})
 
 export default HW10
