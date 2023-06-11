@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react'
+import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {AppStoreType} from './bll/store'
 import {loadingAC} from './bll/loadingReducer'
@@ -13,42 +13,49 @@ import {Loader} from './Loader'
 * 4 - сделать стили в соответствии с дизайном
 * */
 
-const HW10 = React.memo(() => {
+const HW10 = () => {
     // useSelector, useDispatch // пишет студент
-    const loading = useSelector<AppStoreType,  boolean >(state => state.loading.isLoading)
-    const dispatch = useDispatch();
+    // const isLoading = false
 
-    const setLoading = useCallback(() => { // пишет студент // показать крутилку на 1,5 секунд
+    const loading = useSelector<AppStoreType, { isLoading: boolean }>(state => state.loading)
+    const dispatch = useDispatch()
+
+    const setLoading = () => { // пишет студент // показать крутилку на 1,5 секунд
         // dispatch
-        dispatch(loadingAC(true))
-        setTimeout(() => {
-            dispatch(loadingAC(false))
-        }, 1500)
+        dispatch(loadingAC(loading.isLoading))
         // setTimeout
-
-    }, [dispatch])
-
+        setTimeout(() => {
+            dispatch(loadingAC(!loading.isLoading))
+        }, 1500)
+    }
 
     return (
         <div id={'hw10'}>
-            <div className={s2.hwTitle}>Homework #10</div>
-
-            <div className={s2.hw}>
-                {loading ? (
-                    <div id={'hw10-loading'}>
-                        <Loader/>
-                    </div>
-                ) : (
-                    <SuperButton
-                        id={'hw10-button-start-loading'}
-                        onClick={setLoading}
-                    >
-                        Set loading...
-                    </SuperButton>
-                )}
+            <div className={s2.container} style={{paddingTop: "40px"}}>
+                <div className={s2.hwTitle}>Homework №10</div>
             </div>
+            <hr/>
+            {/*демонстрация возможностей компонент:*/}
+            <div className={s2.container}>
+                <div className={s2.hw}>
+                    {loading.isLoading ? (
+                        <div id={'hw10-loading'}>
+                            <Loader />
+                        </div>
+                    ) : (
+                        <SuperButton
+                            id={'hw10-button-start-loading'}
+                            xType={'default'}
+                            onClick={() => setLoading()}
+                        >
+                            Set loading...
+                        </SuperButton>
+                    )}
+                </div>
+            </div>
+            <hr/>
         </div>
     )
-})
+}
 
 export default HW10
