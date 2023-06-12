@@ -27,6 +27,7 @@ const HW10 = () => {
         setTimeout(() => {
             dispatch(loadingAC(false))
         }, 1500)
+
     }
 
     return (
