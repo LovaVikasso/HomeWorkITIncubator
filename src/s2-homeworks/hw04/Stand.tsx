@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import s from './Stand.module.css'
 import SuperInputText from './common/c1-SuperInputText/SuperInputText'
 import SuperCheckbox from './common/c3-SuperCheckbox/SuperCheckbox'
@@ -43,34 +43,18 @@ const Stand = () => {
             <div className={s.buttons}>
                 {/*обычная кнопка:*/}
                 <div>
-                    <SuperButton id={'hw4-super-button-default'}>
-                        default
-                    </SuperButton>
+                    <SuperButton id={'hw4-super-button-default'} xType={'default'}>default</SuperButton>
                 </div>
                 {/*красная кнопка:*/}
                 <div>
-                    <SuperButton id={'hw4-super-button-red'} xType={'red'}>
-                        red
-                    </SuperButton>
+                    <SuperButton id={'hw4-super-button-red'} xType={'red'}>red</SuperButton>
                 </div>
                 {/*задизэйбленная кнопка:*/}
                 <div>
-                    <SuperButton
-                        id={'hw4-super-button-disabled'}
-                        xType={'red'}
-                        disabled
-                    >
-                        disabled
-                    </SuperButton>
+                    <SuperButton id={'hw4-super-button-disabled'} xType={'red'} disabled>disabled</SuperButton>
                 </div>
-                {/*задизэйбленная кнопка:*/}
                 <div>
-                    <SuperButton
-                        id={'hw4-super-button-secondary'}
-                        xType={'secondary'}
-                    >
-                        secondary
-                    </SuperButton>
+                    <SuperButton id={'hw4-super-button-secondary'} xType={'secondary'}>secondary</SuperButton>
                 </div>
             </div>
 
@@ -80,7 +64,8 @@ const Stand = () => {
                     <SuperCheckbox
                         id={'hw4-super-checkbox-with-text'}
                         checked={stateForAllCheckboxes}
-                        onChangeChecked={setChecked}
+                        // onChangeChecked={setChecked}
+                        onChangeChecked={() => setChecked(!stateForAllCheckboxes)}
                     >
                         some text
                     </SuperCheckbox>
@@ -90,7 +75,8 @@ const Stand = () => {
                     <SuperCheckbox
                         id={'hw4-super-checkbox-like-old'}
                         checked={stateForAllCheckboxes}
-                        onChange={(e) => setChecked(e.currentTarget.checked)}
+                        // onChange={(e) => setChecked(e.currentTarget.checked)}
+                        onChangeChecked={() => setChecked(!stateForAllCheckboxes)}
                     />
                 </div>
             </div>

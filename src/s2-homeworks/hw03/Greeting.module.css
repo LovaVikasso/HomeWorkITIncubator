@@ -1,72 +1,87 @@
 .greetingForm {
-    display: flex;
-    flex-direction: column;
-    font-family: 'Montserrat', sans-serif;
-    margin-bottom: 100px;
 }
 
 .inputAndButtonContainer {
     display: flex;
-    flex-direction: row;
-    margin: 5px 0;
+    gap: 12px;
+    margin-bottom: 7px;
 }
 
 .error {
-    color: #D1D1D1;
-}
-
-input {
-    height: 35px;
-    width: 370px;
-    border-radius: 5px;
-    border-width: 1px;
-    padding-left: 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #CC0000;
+    margin-top: 7px;
 }
 
 .input {
-    border-color: rgba(0,0,0,.5);
+    width: 372px;
+    height: 36px;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+    padding: 8px 12px;
 }
 
 .input:focus {
+    color: #000000;
 }
 
 .errorInput {
-    border-color: red;
+    width: 372px;
+    height: 36px;
+    border-radius: 5px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    border: 1px solid #CC0000;
+    padding: 8px 12px;
 }
 
 .button {
-    margin-left: 5px;
-
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 24px;
+    border-radius: 3px;
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 20px;
     color: #FFFFFF;
-    width: 120px;
-    height: 40px;
-    background: #0066CC;
-    border-radius: 20px;
-    border: transparent;
+    background-color: #0066CC;
+    cursor: pointer;
+    border: none;
+    transition: all .2s ease;
+    opacity: 1;
 }
 
 .button:focus {
-    opacity:100%;
+    background-color: #0059B3;
 }
 
 .button:active {
-    opacity:100%;
-}
-
-.button:disabled {
-    /*opacity: .5;*/
+    background-color: #0059B3;
 }
 
 .text {
-    color: rgba(0,0,0,.5);
-    margin: 5px 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    margin-bottom: 9px;
+
 }
 
 .greeting {
-    margin: 5px 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
 }
