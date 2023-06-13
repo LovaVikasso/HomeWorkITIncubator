@@ -24,7 +24,7 @@ const HW13 = () => {
         const url =
             x === null
                 ? 'https://xxxxxx.ccc' // имитация запроса на не корректный адрес
-                : 'https://incubator-personal-page-back.herokuapp.com/api/3.0/homework/test'
+                : 'https://samurai.it-incubator.io/api/3.0/homework/test'
 
         setCode('')
         setImage('')
@@ -34,29 +34,22 @@ const HW13 = () => {
         axios
             .post(url, {success: x})
             .then((res) => {
-                setCode(`Код ${res.status}!`)
+                console.log(res)
+                setCode('Код 200!')
                 setImage(success200)
                 // дописать
-                setInfo(res.data.info)
                 setText(res.data.errorText)
+                setInfo(res.data.info)
             })
             .catch((e) => {
                 // дописать
-                if (e.response.status) {
-                    console.log(e.response.data.errorText)
-                    setCode(`Ошибка ${e.response.status}!!`)
-                    setImage(e.response.status === 500 ? error500 : error400)
-                    setInfo(e.response.data.info)
-                    setText(e.response.data.errorText)
+                    console.log(e)
+                    setCode(e.response.status===400 ? 'Код 400!' : e.response.status===500 ? 'Код 500!' : 'Error')
+                    setImage(e.response.status===400 ? error400 : e.response.status===500 ?error500 : errorUnknown)
+                    setText(e.response?.data?.errorText||e.message)
+                    setInfo(e.response?.data?.info||e.name)
 
-                } else {
-                    // console.log(e.name, e.message)
-                    setImage(errorUnknown)
-                    setCode('Error')
-                    setInfo(e.name)
-                    setText(e.message)
-                }
-            })
+                })
     }
 
     return (
