@@ -7,9 +7,9 @@ import {useSearchParams} from 'react-router-dom'
 import SuperSort from './common/c10-SuperSort/SuperSort'
 
 /*
-* 1 - дописать SuperPagination
-* 2 - дописать SuperSort
-* 3 - проверить pureChange тестами
+* 1 - дописать SuperPagination DONE
+* 2 - дописать SuperSort DONE
+* 3 - проверить pureChange тестами DONE
 * 3 - дописать sendQuery, onChangePagination, onChangeSort в HW15
 * 4 - сделать стили в соответствии с дизайном
 * 5 - добавить HW15 в HW5/pages/JuniorPlus
@@ -20,11 +20,15 @@ type TechType = {
     tech: string
     developer: string
 }
-
-const getTechs = (params: any) => {
+type ParamsType = {
+    sort:string
+    page:number
+    count:number
+}
+const getTechs = (params: ParamsType) => {
     return axios
         .get<{ techs: TechType[], totalCount: number }>(
-            'https://incubator-personal-page-back.herokuapp.com/api/3.0/homework/test3',
+            'https://samurai.it-incubator.io/api/3.0/homework/test3',
             {params}
         )
         .catch((e) => {
@@ -46,21 +50,24 @@ const HW15 = () => {
         getTechs(params)
             .then((res) => {
                 // делает студент
-
+                setLoading(false)
                 // сохранить пришедшие данные
-
-                //
-            })
+                if (res) {
+                    setTechs(res.data.techs)
+                    setTotalCount(res.data.totalCount)
+                }
+                    //
+                    })
     }
 
     const onChangePagination = (newPage: number, newCount: number) => {
         // делает студент
 
-        // setPage(
-        // setCount(
+        setPage(newPage)
+        setCount(newCount)
 
-        // sendQuery(
-        // setSearchParams(
+        sendQuery({page:newPage, count:newCount,sort})
+        setSearchParams({page: page.toString(), count: count.toString()})
 
         //
     }
@@ -68,11 +75,11 @@ const HW15 = () => {
     const onChangeSort = (newSort: string) => {
         // делает студент
 
-        // setSort(
-        // setPage(1) // при сортировке сбрасывать на 1 страницу
+        setSort(newSort)
+        setPage(1) // при сортировке сбрасывать на 1 страницу
 
-        // sendQuery(
-        // setSearchParams(
+        sendQuery({page,count,sort:newSort})
+        setSearchParams({page:page.toString(),count:count.toString()})
 
         //
     }

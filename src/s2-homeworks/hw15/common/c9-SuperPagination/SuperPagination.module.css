@@ -1,5 +1,8 @@
 .pagination {
     display: flex;
+    align-items: center;
+    gap:32px;
+
 }
 
 .text1 {

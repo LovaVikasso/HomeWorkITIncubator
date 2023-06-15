@@ -1,5 +1,8 @@
 .tech {
     width: 50vw;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
 }
 
 .developer {
@@ -23,5 +26,16 @@
 }
 
 .loading {
-
+position: absolute;
+    left: 50%;
+    margin-left: -45px;
+    top:50%;
+    margin-top: -45px;
+    z-index: 100001;
+}
+.icon {
+    width: 6px;
+    height: 8px;
+    margin-left: 5px;
+    cursor: pointer;
 }
